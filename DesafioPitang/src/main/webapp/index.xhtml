@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui" >
+    
+   
+	<h:head>
+		<script language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	    <script language="javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+	    <script language="javascript" src="resources/scripts/scripts.js"></script>
+	    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/ui-lightness/jquery-ui.css" type="text/css" media="all" />
+	    <link href="resources/css/style.css" rel="stylesheet" />
+	   
+	    <title>Desafio Pitang</title>
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	   
+	</h:head>
+	
+	
+	<h:body>
+	
+	
+	
+	<p:panelGrid  id = "title" columns="3"  class="title" layout="grid" columnClasses="ui-g-2 ui-md-2 ui-lg-2,ui-g-8 ui-md-8 ui-lg-8,ui-g-2 ui-md-2 ui-lg-2">
+		 <h:column>
+    	</h:column>
+    	
+    	 <h:column>
+		<p><img src="resources/gfx/logopitang.png"  height="80" class="d-inline-block align-top" alt=""/> <img src="resources/gfx/marcapitang.png"  height="80" class="d-inline-block align-top" alt=""/></p>
+		<h:outputText value="Desafio Pitang Sefaz" />
+		
+		</h:column>
+		 <h:column>
+    	</h:column>
+	</p:panelGrid>
+	
+	<p:panelGrid id = "subtitle" columns="3"  layout="grid" class="subtitle" columnClasses="ui-g-2 ui-md-2 ui-lg-2,ui-g-8 ui-md-8 ui-lg-8,ui-g-2 ui-md-2 ui-lg-2">
+		<h:outputText value="" />
+		<h:outputText value="Preencha o cadastro ou faça login para acessar o sistema" class="subtext"  />
+		<h:outputText value="" />
+	</p:panelGrid>
+	
+	<p:panelGrid id="main" columns="4" layout="grid" styleClass="showcase-text-align-center" columnClasses="ui-g-2 ui-md-2 ui-lg-1, ui-g-8 ui-md-4 ui-lg-5, ui-g-8 ui-md-4 ui-lg-5,ui-g-2 ui-md-2 ui-lg-1">
+    <h:column>
+    </h:column>
+    	<h:column>
+    	
+    	 	<ui:insert name="userForm">
+    	 		<h:form id="signUp" style="border:0px">
+				
+					<p:fieldset class="userForm" legend="Faça seu cadastro" style="margin-bottom:20px">
+		     			
+		     			 <ui:include src="/userform.xhtml" />
+		      
+		      		</p:fieldset>
+				
+				</h:form>
+		      
+		    </ui:insert>
+	    </h:column>
+	    
+	   <h:column>
+		   <h:form id="signIn" style="border:0px" rendered="#{loginBean.user eq null}">
+			   <p:fieldset class="userForm" legend="Seu login" style="margin-bottom:20px">
+				   <p><p:inputText placeholder="Seu e-mail" id="emailLogin" value="#{loginBean.email}" binding="#{loginBean.uiEmail}" required="true" label="email" requiredMessage="Favor inserir o seu e-mail" />
+				   <br/>&nbsp; <h:message for="emailLogin" errorClass="invalid" /> </p>
+				   
+				   <p><p:password id="passwordLogin" placeholder="Seu senha" value="#{loginBean.password}" binding="#{loginBean.uiPassword}" required="true" label="password" requiredMessage="Favor inserir sua senha" />
+				   <br/>&nbsp; <h:message for="passwordLogin" errorClass="invalid" /> </p> 
+				   
+				   <p><h:commandButton id="login" value="Login" action="#{loginBean.validLogin}" styleClass="register"/> 
+				   
+				   </p>
+	           </p:fieldset>
+		   </h:form>
+		   
+		   <h:form id="logged" style="border:0px" rendered="#{loginBean.user ne null}">  
+			  <p:fieldset class="userForm" legend="Olá, #{loginBean.user.name}!" style="margin-bottom:20px">
+			<h:outputText class="loggedText" value="Você já está logado, se você desejar fazer um login com outro usuário você precisa sair do sistema."/>
+			<p><h:commandButton value="Sair" action="#{loginBean.logout}" /></p>
+			 </p:fieldset>
+			 
+
+</h:form>
+		   
+		</h:column>
+	<h:column>
+    </h:column>
+		
+	</p:panelGrid>
+	
+	
+	
+	
+	
+	</h:body>
+	
+	</html>
+	

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    template="/WEB-INF/templates/default.xhtml">
+    
+   
+  <ui:define name="content">
+
+
+		<p:panelGrid  id = "title" columns="3"  class="title" layout="grid" columnClasses="ui-g-2 ui-md-2 ui-lg-2,ui-g-8 ui-md-8 ui-lg-8,ui-g-2 ui-md-2 ui-lg-2">
+			
+			 <h:column>
+	    	</h:column>
+	    	
+	    	 <h:column>
+			<p><img src="resources/gfx/logopitang.png"  height="80" class="d-inline-block align-top" alt=""/> <img src="resources/gfx/marcapitang.png"  height="80" class="d-inline-block align-top" alt=""/></p>
+			<h:outputText value="Desafio Pitang Sefaz" />
+			
+			</h:column>
+			 <h:column>
+	    	</h:column>
+		</p:panelGrid>
+		
+		<p:panelGrid id = "subtitle" columns="3"  layout="grid" class="subtitle" columnClasses="ui-g-2 ui-md-2 ui-lg-2,ui-g-8 ui-md-8 ui-lg-8,ui-g-2 ui-md-2 ui-lg-2">
+			<h:outputText value="" />
+			<h:outputText value="Essa página é de acesso restrito aos usuários" class="subtext"  />
+			<h:outputText value="" />
+		</p:panelGrid>
+		
+		<p:panelGrid id="main" columns="3" layout="grid" styleClass="showcase-text-align-center" columnClasses="ui-g-2 ui-md-2 ui-lg-1, ui-g-8 ui-md-8 ui-lg-10,ui-g-2 ui-md-2 ui-lg-1">
+	    <h:column>
+	    </h:column>
+	    <h:column>
+	    	
+    	 	<ui:insert name="userForm">
+    	 		
+    	 	
+    	 		 	<p:fieldset class="userForm" legend="Olá! Essa é sua página" style="margin-bottom:20px">
+    	 		 	
+    	 		 	<h3> <h:outputText value="#{user.name}" /> </h3>
+    	 		 	<h3> <h:outputText value="#{user.email}" /> </h3>
+    	 		 	
+    	 		 	<h:panelGroup rendered="#{empty user.phones}">
+           			 <em> Não há telefones cadastrados.</em> <br/>
+           			 para cadastrar clique <a href="userphones.xhtml">aqui</a> 
+       			 </h:panelGroup>
+    	 		 		
+			    	 <br/>
+                
+                <h:panelGroup rendered="#{not empty user.phones}">
+                <h4> <h:outputText value="Meus contatos" /> </h4>
+                 </h:panelGroup>
+                 
+                 <br/><h:messages styleClass="messages"
+                        errorClass="invalid" infoClass="valid"
+                        warnClass="warning" globalOnly="true" />
+              
+              <h:form id="PhonesTable" style="border:0px"> 
+	              <p:dataTable class="phonesTbl" id="phoneList" var="phoneList" value="#{updateUserBean.phonesList}" rendered="#{not empty updateUserBean.phonesList}" width="90%" rowKey="#{updateUserBean.phoneList.id}"  selection="#{updateUserBean.phoneList}" >
+	                	
+		            <p:column>
+		            <p:inputText value="#{phoneList.id}" id="phoneListId" type="hidden" />
+		                <f:facet style="20%" name="header">DDD</f:facet>
+		                <h:outputText value="#{phoneList.ddd}" />
+		            </p:column>
+		            
+		             <p:column>
+		                <f:facet style="40%" name="header">Número</f:facet>
+		                <h:outputText value="#{phoneList.number}" />
+		            </p:column>
+		            
+		             <p:column>
+		                <f:facet style="40%" name="header">Tipo</f:facet>
+		                <h:outputText value="#{phoneList.phonetype.label}" />
+		            </p:column>
+		            
+		            <p:column>
+		                <f:facet style="20%" name="header"></f:facet>
+		            <h:commandButton  id="register" title="Excluir" icon="ui-icon ui-icon-closethick" action="#{updateUserBean.removePhone(phoneList)}" value="Excluir" styleClass="register" update="phoneList" immediate="true" process="@this">
+		            <f:setPropertyActionListener value="#{phoneList}" target="#{updateUserBean.phoneList}" />
+		            </h:commandButton>
+		            </p:column>
+				    </p:dataTable>	       
+			    </h:form>       		
+			       
+    	 		 		
+		                
+		      
+		      		</p:fieldset>
+		      		
+				
+			
+		      
+		    </ui:insert>
+	    </h:column>
+	    </p:panelGrid>
+	
+	
+	</ui:define>
+</ui:composition>
+	
+	

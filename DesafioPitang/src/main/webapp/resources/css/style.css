@@ -1,0 +1,259 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-size: 1.1em;
+  color:#363636;
+}
+
+.ui-widget-content {
+	background: none;
+	border: none;
+}
+
+#title{
+	text-align: center;
+	padding-top:15px;
+}
+
+#subtitle {
+	text-align: center;
+}
+
+.loggedText {
+	
+	line-height: 30px;
+}
+
+#title_content, #title_content .ui-g div, #subtitle_content, #subtitle_content .ui-g div  {
+border:none;	
+background-color: #fff;
+}
+
+
+#title_content .ui-g div {
+	text-align: center;
+	border:none;
+	font-family: "Helvetica Neue";
+	font-weight: bolder;
+	font-size:1.3em;	
+}
+
+#subtitle_content .ui-g div {
+	font-family: "Helvetica Neue";
+	font-weight: lighter;
+	text-align: center;
+	font-size:1.1em;	
+}
+
+ #subtitle_content .ui-g div.ui-lg-8 {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	padding-bottom: 20px;
+}
+
+#main{
+	
+padding-top: 20px;	
+}
+
+.userForm {
+border: 1px solid rgba(0, 0, 0, 0.4);
+text-align: left;
+border: none;
+ 
+}
+
+.userForm .ui-fieldset-legend {
+border: none;
+background: none;
+color:#333;
+ 
+}
+
+.userForm .ui-fieldset-content {
+	text-align:left;
+	padding: .6em 1em;
+	font-size: .8em;
+	
+}
+
+
+.userForm .ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield {
+	border: 1px solid rgba(170, 170, 170, 0.2);
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	color: #333;
+	width: 80%;
+	line-height: 10px;
+    padding: 10px;
+    background: none;
+}
+
+.ui-widget input {
+	
+	border: 1px solid rgba(170, 170, 170, 0.2);
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	color: #333;
+	line-height: 10px;
+    padding: 10px 30px;
+    background-color: #333;
+    color:#fff;
+}
+
+
+.userForm .ui-state-default, .ui-widget-content .ui-state-default{
+	color: #333	
+}
+
+
+.userForm .ui-inputfield.ui-state-focus, .ui-widget-content .ui-inputfield.ui-state-focus, .ui-state-focus, .ui-widget-content .ui-state-focus {
+	color: #333;
+	-webkit-box-shadow: none;	
+	background-color: #f3f3f3;
+	border-color: rgba(62, 62, 62, 0.8);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(82, 168, 236, 0.6);
+    outline: 0 none;
+}
+}
+
+.userForm .ui-inputfield.ui-state-hover, .ui-widget-content .ui-inputfield.ui-state-hover{
+	color: #333;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;	
+	
+}
+
+.ui-growl .ui-state-highlight{
+	
+	background: none;
+	border: 1px solid #aaa;
+	text-shadow: none;
+	box-shadow: none;
+	-webkit-box-shadow:none;
+	-moz-box-shadow: none;
+	
+	
+}
+
+.invalid{
+	font-size:0.8em;
+	color: #ca3939;
+	list-style: none;
+}
+
+.valid{
+	font-size:1.2em;
+	color: #0f285e;
+	list-style: none;
+	
+}
+
+.ui-fieldset-content table {
+	
+	width: 55%;
+	align: center;
+	cellpadding: 10px
+	
+	
+	
+}
+.ui-fieldset-content table tbody {
+	
+	border: 1px solid rgba(170, 170, 170, 0.2);
+	text-align:center;
+}
+
+.ui-fieldset-content table thead {
+	background-color: #cdcdcd;
+	border: 1px solid rgba(170, 170, 170, 0.4);
+	text-align:center;
+	
+}
+
+.phonesTbl input {
+	
+	margin-top:10px;
+	padding: 8px;
+}
+
+
+.card {
+	
+	border:none;
+}
+
+.ui-g div {
+    text-align: center;
+    border: 1px solid #fafafa;
+}
+
+#top .bgcolor {
+	background-color: #f8ac1d;
+}
+
+  <style>#body-row {
+    margin-left:0;
+    margin-right:0;
+}
+#sidebar-container {
+    min-height: 100vh;   
+    background-color: #333;
+    padding: 0;
+}
+
+/* Sidebar sizes when expanded and expanded */
+.sidebar-expanded {
+    width: 230px;
+}
+.sidebar-collapsed {
+    width: 60px;
+}
+
+/* Menu item*/
+#sidebar-container .list-group a {
+    height: 50px;
+    color: white;
+}
+
+/* Submenu item*/
+#sidebar-container .list-group .sidebar-submenu a {
+    height: 45px;
+    padding-left: 30px;
+}
+.sidebar-submenu {
+    font-size: 0.9rem;
+}
+
+/* Separators */
+.sidebar-separator-title {
+    background-color: #333;
+    height: 35px;
+}
+.sidebar-separator {
+    background-color: #333;
+    height: 25px;
+}
+.logo-separator {
+    background-color: #333;    
+    height: 60px;
+}
+
+/* Closed submenu icon */
+#sidebar-container .list-group .list-group-item[aria-expanded="false"] .submenu-icon::after {
+  content: " \f0d7";
+  font-family: FontAwesome;
+  display: inline;
+  text-align: right;
+  padding-left: 10px;
+}
+/* Opened submenu icon */
+#sidebar-container .list-group .list-group-item[aria-expanded="true"] .submenu-icon::after {
+  content: " \f0da";
+  font-family: FontAwesome;
+  display: inline;
+  text-align: right;
+  padding-left: 10px;
+}

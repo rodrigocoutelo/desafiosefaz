@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    template="/WEB-INF/templates/default.xhtml">
+    
+   
+    <ui:define name="content">
+    
+    
+    
+    <!-- <h:form style="border:0px">   
+    <p:growl id="growl" showDetail="true" life="3000" sticky="true" />
+    </h:form>
+     -->
+        <h1>Cadastro de Usuários</h1>
+        
+        <h1><a href="login.xhtml">Login</a></h1>
+
+     
+     	
+     	
+        <h:form id="reg">
+            <h2>User Registration</h2>
+            <p>Enforces annotation-based constraints defined on the
+                model class.</p>
+          
+            <p:panel columns="8" columnClasses="titleCell">
+               
+                <p:outputLabel for="name" value="Name:" />
+                <p:inputText id="name" value="#{newUser.name}" />
+                <p:message for="name" errorClass="invalid" />
+
+                <p:outputLabel for="email" value="Email:" />
+                <p:inputText id="email" value="#{newUser.email}" />
+                <p:message for="email" errorClass="invalid" />
+                
+                 <p:outputLabel for="role" value="Tipo:" />
+                
+                <h:selectOneMenu  id="role" value="#{newUser.role}">
+                	<f:selectItem itemValue = "USER" itemLabel="User"  />	
+                	<f:selectItem itemValue = "ADMINISTRATOR" itemLabel="Administrator"  />
+                 
+                 </h:selectOneMenu>
+
+				<p:outputLabel for="phoneDDD" value="Telefone" />
+                 <p:inputText id="phoneDDD"
+                    value="#{newPhone.ddd}" />
+                 <p:inputText id="phoneNumber" value="#{newPhone.number}" class="maskPhone" />
+                 
+                 
+                  <h:selectOneMenu  id="phoneType" value="#{newPhone.phonetype}" style="width:125px" >
+                  <f:selectItem itemLabel="Select One" itemValue="" />
+                   
+                 	<f:selectItem itemLabel="Selecione..." itemValue="" noSelectionOption="true" />
+                 	
+                 	 
+                 	 <f:selectItem itemLabel="Celular" itemValue="CELULAR"  />
+                 	<f:selectItem itemLabel="Residencial" itemValue="RESIDENCIAL" />
+                 	<f:selectItem itemLabel="Comercial" itemValue="COMERCIAL"/>
+                 	<f:selectItem itemLabel="Outro" itemValue="OUTRO"/> 
+    
+    
+     
+                 </h:selectOneMenu>
+                    
+               	<h:outputLabel for="password" value="Password:" />
+                <h:inputText id="password" value="#{newUser.password}" />
+                <h:message for="password" errorClass="invalid" /> 
+    
+            </p:panel>
+        
+
+            <p>
+                <h:panelGrid columns="2">
+                    <h:commandButton id="register"
+                        action="#{userController.register}"
+                        value="Register" styleClass="register" />
+                    <h:messages styleClass="messages"
+                        errorClass="invalid" infoClass="valid"
+                        warnClass="warning" globalOnly="true" />
+                </h:panelGrid>
+            </p>
+            
+            
+	            <p:overlayPanel widgetVar="phoneOP" showEffect="fade" hideEffect="fade" dismissable="false" showCloseIcon="true">
+	       			 <p:outputPanel id="phonesDetail" style="text-align:center;">
+	            	<p:panelGrid  columns="2" rendered="#{not empty dtSelectionView.selectedCar}" columnClasses="label,value">
+	                <f:facet name="header">
+	                    
+	                </f:facet>
+	                 
+	                <h:outputText value="Id:" />
+	                <h:outputText value="" />
+	 
+	                <h:outputText value="Year" />
+	                <h:outputText value="" />
+	 
+	                <h:outputText value="Color:" />
+	                <h:outputText value="" style="color:#{dtSelectionView.selectedCar.color}"/>
+	             
+	                <h:outputText value="Price" />
+	                <h:outputText value="" />
+	            </p:panelGrid>
+	        </p:outputPanel>
+	    
+	    </p:overlayPanel>
+        
+        </h:form>
+        
+        
+        
+        
+        <h2>Users</h2>
+        <h:panelGroup rendered="#{empty users}">
+            <em>No registered user.</em>
+        </h:panelGroup>
+        <h:dataTable var="_user" value="#{users}"
+            rendered="#{not empty users}"
+            styleClass="simpletablestyle">
+            <h:column>
+                <f:facet name="header">Id</f:facet>
+                #{_user.id}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Name</f:facet>
+                #{_user.name}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Email</f:facet>
+                #{_user.email}
+            </h:column>
+            <h:column>
+           		 <h:panelGroup for="phoneBT" >
+                <f:facet name="header">Phones #</f:facet>
+                        <h:panelGroup rendered="#{empty _user.phones}">
+           			   <em>No phones</em>
+       		 	</h:panelGroup>
+                
+                <h:dataTable id="userPhones" var="_phone" value="#{_user.phones}" rendered="#{not empty _user.phones}"  >
+	            <h:column>
+	                <f:facet name="header"> </f:facet>
+	                #{_phone.ddd} - #{_phone.number} - #{_phone.phonetype.label} 
+	            </h:column>
+                
+                </h:dataTable>
+            </h:panelGroup>
+            </h:column> 
+            
+             <h:column>
+            <h:commandButton id="phoneBT" title="View" rendered="#{not empty _user.phones}" />
+            </h:column>
+            
+            
+           <!--  <h:column>
+                <f:facet name="header">REST URL</f:facet>
+                <a
+                    href="#{request.contextPath}/rest/users/#{_user.id}">/rest/users/#{_user.id}</a>
+            </h:column>
+            <f:facet name="footer">
+            REST URL for all users: <a
+                    href="#{request.contextPath}/rest/users">/rest/users</a>
+            </f:facet> -->
+        </h:dataTable>
+        
+       
+        
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15836136351630" configfile="/DesafioPitang/src/main/webapp/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="login.xhtml" x="144" y="264" id="pf15836138925101" referenceLink="//@navigationRule.6/@navigationCase.0/@toViewId|" outlinks="pf15836138925102 pf15836140710867" inlinks="pf15836138925113 pf15836140710868" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="index.html" x="324" y="528" id="pf15836138925114" referenceLink="//@navigationRule.6/@fromViewId|" outlinks="pf15836140710868" inlinks="pf15836140710867" path="/index.html"/>
+  <nodes xsi:type="pageflow:PFPage" name="admin" x="468" y="96" id="pf15836138925115" referenceLink="//@navigationRule.4/@navigationCase.0/@toViewId|" outlinks="pf15836138925116 pf15836138925113 pf15836140710869 pf158361407108610" inlinks="pf15836138925102 pf15836138925116 pf15836140710869 pf158361407108610" path="/admin.xhtml"/>
+  <links id="pf15836138925102" target="pf15836138925115" source="pf15836138925101" outcome="login" fromaction="#{loginBean.logout}">
+    <bendPoints d1Width="143" d1Height="51" d2Width="-125" d2Height="87"/>
+  </links>
+  <links id="pf15836138925116" target="pf15836138925115" source="pf15836138925115">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
+  <links id="pf15836138925113" target="pf15836138925101" source="pf15836138925115" outcome="logout" redirect="true"/>
+  <links id="pf15836140710869" target="pf15836138925115" source="pf15836138925115">
+    <bendPoints d1Height="-66" d2Height="-66"/>
+    <bendPoints d1Width="-94" d1Height="-66" d2Width="-94" d2Height="-66"/>
+    <bendPoints d1Width="-94" d2Width="-94"/>
+  </links>
+  <links id="pf158361407108610" target="pf15836138925115" source="pf15836138925115">
+    <bendPoints d1Height="-96" d2Height="-96"/>
+    <bendPoints d1Width="-124" d1Height="-96" d2Width="-124" d2Height="-96"/>
+    <bendPoints d1Width="-124" d2Width="-124"/>
+  </links>
+  <links id="pf15836140710867" target="pf15836138925114" source="pf15836138925101" outcome="user" redirect="true"/>
+  <links id="pf15836140710868" target="pf15836138925101" source="pf15836138925114" outcome="logout"/>
+</pageflow:Pageflow>

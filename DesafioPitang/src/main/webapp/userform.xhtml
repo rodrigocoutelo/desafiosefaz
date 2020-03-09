@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+	<html xmlns="http://www.w3.org/1999/xhtml"
+	     xmlns:ui="http://java.sun.com/jsf/facelets"
+	    xmlns:f="http://java.sun.com/jsf/core"
+	    xmlns:h="http://java.sun.com/jsf/html"
+	    xmlns:p="http://primefaces.org/ui" >
+   
+
+
+					
+						<p><p:inputText placeholder="Nome" id="name" value="#{newUser.name}"  label="Nome" required="true" requiredMessage="Favor inserir o seu nome." />
+						<br/> <h:message for="name" errorClass="invalid" /> </p>
+			            
+		            	<p><p:inputText placeholder="E-mail" id="email" value="#{newUser.email}" binding="#{userController.uiEmail}" label="E-mail" required="true" requiredMessage="Favor inserir o seu e-mail"/>
+		            	<br/> <h:message for="email" errorClass="invalid" /> </p>
+		            
+		            	<p><p:password placeholder="Senha" id="password" value="#{newUser.password}" required="true" label="Senha" match="repeated_password"  requiredMessage="Favor inserir uma senha."  validatorMessage="As senhas precisam ser iguais "/>
+		            	<br/> <h:message for="password" errorClass="invalid" />  </p>
+		            
+		            	<p><p:password placeholder="Confirme a senha" id="repeated_password" value="#{newUser.password}" required="true" label="Confirmação da senha" requiredMessage="Favor confirmar a senha." validatorMessage="As senhas precisam ser iguais " /> 
+		            	<br/> <h:message for="repeated_password" errorClass="invalid" />  </p>
+						
+		                <p><h:commandButton id="register" action="#{userController.save}" value="Cadastrar" styleClass="register" />
+		                </p>
+						
+					
+
+</html>

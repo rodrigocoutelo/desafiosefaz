@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    >
+    
+   
+	<h:head>
+		<script language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	    <script language="javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+	    <script language="javascript" src="scripts.js"></script>
+	    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/ui-lightness/jquery-ui.css" type="text/css" media="all" />
+	   
+	   
+	    <title>DesafioPitang</title>
+	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	    <h:outputStylesheet name="css/screen.css" />
+	</h:head>
+	
+	
+	<h:body>
+	
+	
+	<script type="text/javascript">
+    function handleLoginRequest(xhr, status, args) {
+        if(args.validationFailed || !args.loggedIn) {
+            PF('dlg').jq.effect("shake", {times:5}, 100);
+        }
+       
+    }
+</script>
+
+ 
+<h:form id="login" style="border:0px" rendered="#{loginBean.user eq null}">        
+
+     
+    <p:growl id="growl" showDetail="false" life="3000" sticky="true" />
+     
+    <p:dialog header="Login" widgetVar="dlg" resizable="false" visible="true" closable="false">
+        <h:panelGrid columns="2" cellpadding="5" >
+            <h:outputLabel for="email" value="Email: " />
+            <p:inputText id="email" value="#{loginBean.email}" required="true" label="email" />
+             
+            <h:outputLabel for="password" value="Password:" />
+            <p:password id="password" value="#{loginBean.password}" required="true" label="password" />
+             
+            <f:facet name="footer">                                                     
+                <p:commandButton value="Login" update="growl" action="#{loginBean.validLogin}"
+                                 oncomplete="handleLoginRequest(xhr, status, args)" />
+            </f:facet>  
+        </h:panelGrid>
+    </p:dialog>    
+</h:form>
+
+<h:form id="logged" style="border:0px" rendered="#{loginBean.user ne null}">  
+
+	<p:dialog header="Login" widgetVar="dlgLogged" resizable="false" visible="true" closable="false">
+		Olá, #{loginBean.user.name}!
+		
+		Você já está logado, caso queira fazer um novo login com outro usuário você precisa sair do sistema.
+			 <p:commandButton value="Sair" action="#{loginBean.logout}" />
+	</p:dialog>
+
+</h:form>
+	
+	
+	
+	
+	
+	
+	</h:body>
+	
+	</html>
+	
