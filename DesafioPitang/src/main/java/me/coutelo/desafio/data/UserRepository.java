@@ -23,7 +23,6 @@ public class UserRepository {
 		final CriteriaBuilder cb = em.getCriteriaBuilder();
 		final CriteriaQuery<User> criteria = cb.createQuery(User.class);
 		final Root<User> user = criteria.from(User.class);
-		user.fetch("phones", JoinType.INNER);
 		criteria.select(user).where(cb.equal(user.get("email"), email));
 		criteria.select(user);
 
