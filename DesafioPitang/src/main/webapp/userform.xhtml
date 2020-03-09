@@ -20,7 +20,7 @@
 		            	<p><p:password placeholder="Senha" id="password" value="#{newUser.password}" required="true" label="Senha" match="repeated_password"  requiredMessage="Favor inserir uma senha."  validatorMessage="As senhas precisam ser iguais "/>
 		            	<br/> <h:message for="password" errorClass="invalid" />  </p>
 		            
-		            	<p><p:password placeholder="Confirme a senha" id="repeated_password" value="#{newUser.password}" required="true" label="Confirmação da senha" requiredMessage="Favor confirmar a senha." validatorMessage="As senhas precisam ser iguais " /> 
+		            	<p><p:password placeholder="Confirme a senha" id="repeated_password" value="#{newUser.password}" required="true" label="Confirmação da senha" requiredMessage="Favor confirmar a senha."  /> 
 		            	<br/> <h:message for="repeated_password" errorClass="invalid" />  </p>
 						
 		                <p><h:commandButton id="register" action="#{userController.save}" value="Cadastrar" styleClass="register" />
